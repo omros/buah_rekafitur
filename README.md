@@ -1,31 +1,37 @@
-# Buah Rekafitur
+# Dokumentasi Singkat Ekstraksi Fitur Gambar Buah
 
-Proyek ini merupakan notebook Python untuk ekstraksi dan visualisasi fitur gambar pada dataset buah. Fitur yang diekstrak meliputi Histogram RGB dan Histogram of Oriented Gradients (HOG). Hasil ekstraksi dapat diekspor ke file CSV untuk keperluan analisis atau machine learning.
+## Deskripsi Data
+Dataset terdiri dari gambar buah-buahan (apel, alpukat, mangga, jeruk, semangka) yang tersimpan dalam subfolder berbeda di direktori `gambar_buah/`. Setiap subfolder mewakili satu kategori buah. Gambar diambil dari berbagai kondisi pencahayaan dan posisi.
 
-Notebook juga menyediakan visualisasi interaktif: pengguna dapat memilih kategori buah dan melihat contoh histogram RGB serta visualisasi HOG dari gambar di kategori tersebut.
+## Langkah Feature Engineering (FE)
 
-Cocok digunakan untuk pembelajaran rekayasa fitur citra, eksplorasi data gambar, dan persiapan data untuk klasifikasi berbasis machine learning.
+### Ekstraksi Histogram RGB
+- Setiap gambar dikonversi ke RGB.
+- Histogram tiap channel (R, G, B) dihitung (32 bin per channel).
+- Histogram digabung dan dinormalisasi.
+- Hasil akhir: vektor fitur histogram RGB per gambar.
 
-## Alur Penggunaan
-1. Jalankan `main.ipynb` di Jupyter Notebook atau VS Code.
-2. Pilih kategori buah pada dropdown yang tersedia.
-3. Notebook akan menampilkan:
-   - Histogram RGB: distribusi warna merah, hijau, dan biru dari gambar.
-   - HOG: visualisasi pola tepi dan tekstur dari gambar.
+### Ekstraksi HOG (Histogram of Oriented Gradients)
+- Gambar dikonversi ke grayscale.
+- Fitur HOG diekstrak dengan parameter: 9 orientasi, 8x8 pixels per cell, 2x2 cells per block.
+- Hasil akhir: vektor fitur HOG per gambar.
 
-## Dependensi
-- opencv-python
-- scikit-image
-- matplotlib
-- ipywidgets
+### Penyimpanan Fitur
+- Fitur histogram dan HOG disimpan ke file CSV (`fitur_histogram.csv`, `fitur_hog.csv`).
 
-## Struktur Data
-- Folder `gambar_buah/` berisi subfolder untuk setiap kategori buah. Setiap subfolder berisi file gambar (JPEG) dari buah tersebut.
+## Insight
 
-## Catatan Penting
-- Hanya satu gambar per kategori yang divisualisasikan untuk menjaga tampilan tetap ringkas.
-- Anda dapat menambah atau mengganti gambar di dalam folder `gambar_buah` sesuai kebutuhan.
+### Distribusi Data
+- Setiap kategori buah memiliki jumlah gambar yang seimbang, memudahkan analisis dan pelatihan model klasifikasi.
 
----
+### Karakteristik Histogram RGB
+- Histogram RGB tiap kategori menunjukkan pola warna dominan berbeda, misal apel cenderung memiliki puncak pada channel merah.
 
-Dokumentasi singkat ini membantu memahami cara kerja dan penggunaan notebook visualisasi fitur gambar pada dataset buah.
+### Ciri Tekstur dari HOG
+- Fitur HOG mampu menangkap pola garis dan tekstur khas pada masing-masing buah, membantu membedakan antar kategori.
+
+### Potensi Klasifikasi
+- Kombinasi fitur warna (histogram) dan tekstur (HOG) dapat digunakan untuk membangun model klasifikasi buah secara otomatis.
+
+### Visualisasi
+- Visualisasi histogram dan HOG memperlihatkan perbedaan signifikan antar kategori, baik dari sisi warna maupun tekstur.
