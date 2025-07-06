@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 # Buah Rekafitur
 
 Proyek ini merupakan notebook Python untuk ekstraksi dan visualisasi fitur gambar pada dataset buah. Fitur yang diekstrak meliputi Histogram RGB dan Histogram of Oriented Gradients (HOG). Hasil ekstraksi dapat diekspor ke file CSV untuk keperluan analisis atau machine learning.
@@ -29,3 +30,6 @@ Cocok digunakan untuk pembelajaran rekayasa fitur citra, eksplorasi data gambar,
 ---
 
 Dokumentasi singkat ini membantu memahami cara kerja dan penggunaan notebook visualisasi fitur gambar pada dataset buah.
+=======
+# buah_rekafitur
+>>>>>>> 334578d51e04d218c665ec981281b49fe0fce17c
